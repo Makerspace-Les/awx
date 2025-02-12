@@ -1,0 +1,6 @@
+---
+- name: Test connection to laptop
+  hosts: all
+  tasks:
+    - name: Ping the host
+      ping:
