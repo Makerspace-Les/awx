@@ -26,16 +26,16 @@
     - name: Laufwerk mounten
       command: mount /mnt/mein-laufwerk
 
-    - name: Automount bei Benutzeranmeldung konfigurieren
-      lineinfile:
-        path: /etc/pam.d/common-session
-        line: "session optional pam_mount.so"
-        create: yes
-      notify:
-        - restart pam_mount
-
-  handlers:
-    - name: restart pam_mount
-      service:
-        name: pam_mount
-        state: restarted
+#    - name: Automount bei Benutzeranmeldung konfigurieren
+#      lineinfile:
+#        path: /etc/pam.d/common-session
+#        line: "session optional pam_mount.so"
+#        create: yes
+#      notify:
+#        - restart pam_mount
+#
+#  handlers:
+#    - name: restart pam_mount
+#      service:
+#        name: pam_mount
+#        state: restarted
