@@ -15,7 +15,7 @@
     - name: Laufwerk in /etc/fstab eintragen
       mount:
         path: /mnt/mein-laufwerk
-        src: 192.168.1.100:/freigegebenes-verzeichnis  # Quelle des Laufwerks (NFS oder Samba)
+        src: 192.168.1.148:/data/shared  # Quelle des Laufwerks (NFS oder Samba)
         fstype: nfs  # Dateisystemtyp (z. B. nfs, cifs für Samba)
         opts: defaults
         state: present
