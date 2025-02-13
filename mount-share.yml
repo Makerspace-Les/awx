@@ -1,0 +1,38 @@
+---
+- name: Laufwerk bei Anmeldung mounten
+  hosts: all  # Ziel-Hosts (z. B. alle Laptops)
+  become: yes  # Führe die Aufgaben mit Root-Rechten aus
+
+  tasks:
+    - name: Mount-Punkt erstellen
+      file:
+        path: /mnt/mein-laufwerk
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Laufwerk in /etc/fstab eintragen
+      mount:
+        path: /mnt/mein-laufwerk
+        src: 192.168.1.100:/freigegebenes-verzeichnis  # Quelle des Laufwerks (NFS oder Samba)
+        fstype: nfs  # Dateisystemtyp (z. B. nfs, cifs für Samba)
+        opts: defaults
+        state: present
+
+    - name: Laufwerk mounten
+      command: mount /mnt/mein-laufwerk
+
+    - name: Automount bei Benutzeranmeldung konfigurieren
+      lineinfile:
+        path: /etc/pam.d/common-session
+        line: "session optional pam_mount.so"
+        create: yes
+      notify:
+        - restart pam_mount
+
+  handlers:
+    - name: restart pam_mount
+      service:
+        name: pam_mount
+        state: restarted
