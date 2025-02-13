@@ -3,7 +3,7 @@
   hosts: all  # Ziel-Hosts (z. B. alle Laptops)
   become: yes  # Führe die Aufgaben mit Root-Rechten aus
   vars_files:
-    - cred.yml  # Lade die verschlüsselten Anmeldeinformationen
+#    - cred.yml  # Lade die verschlüsselten Anmeldeinformationen
 
   tasks:
     - name: Mount-Punkt erstellen
