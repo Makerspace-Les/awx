@@ -1,7 +1,9 @@
 ---
-- name: Laufwerk bei Anmeldung mounten
+- name: Laufwerk mit Authentifizierung mounten
   hosts: all  # Ziel-Hosts (z. B. alle Laptops)
   become: yes  # Führe die Aufgaben mit Root-Rechten aus
+  vars_files:
+    - cred.yml  # Lade die verschlüsselten Anmeldeinformationen
 
   tasks:
     - name: Mount-Punkt erstellen
@@ -12,12 +14,12 @@
         group: root
         mode: '0755'
 
-    - name: Laufwerk in /etc/fstab eintragen
+    - name: Laufwerk in /etc/fstab eintragen (NFS mit Authentifizierung)
       mount:
         path: /mnt/mein-laufwerk
-        src: 192.168.1.148:/data/shared  # Quelle des Laufwerks (NFS oder Samba)
-        fstype: nfs  # Dateisystemtyp (z. B. nfs, cifs für Samba)
-        opts: defaults
+        src: 192.168.1.148:/data/shared  # Quelle des Laufwerks (NFS)
+        fstype: nfs  # Dateisystemtyp (nfs oder cifs für Samba)
+        opts: "username={{ nfs_username }},password={{ nfs_password }},vers=4.1"
         state: present
 
     - name: Laufwerk mounten
