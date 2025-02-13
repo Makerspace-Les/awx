@@ -19,7 +19,7 @@
         path: /mnt/mein-laufwerk
         src: 192.168.1.148:/data/shared  # Quelle des Laufwerks (NFS)
         fstype: nfs  # Dateisystemtyp (nfs oder cifs für Samba)
-        opts: "username={{ nfs_username }},password={{ nfs_password }},vers=4.1"
+        opts: "username=administrator,password=Benny25!,vers=4.1"
         state: present
 
     - name: Laufwerk mounten
