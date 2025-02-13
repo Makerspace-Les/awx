@@ -1,7 +1,7 @@
 ---
 - name: Laufwerk mit Authentifizierung mounten
   hosts: all  # Ziel-Hosts (z. B. alle Laptops)
-  become: no  # Führe die Aufgaben mit Root-Rechten aus
+  become: yes  # Führe die Aufgaben mit Root-Rechten aus
   vars_files:
 #    - cred.yml  # Lade die verschlüsselten Anmeldeinformationen
 
