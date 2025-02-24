@@ -1,7 +1,7 @@
 ---
 - name: Mount Samba Share
   hosts: all
-  become: false
+  become: true
   tasks:
     - name: Install cifs-utils
       ansible.builtin.package:
