@@ -4,7 +4,6 @@
   become: true
   tasks:
     - name: Install cifs-utils
-      become_method: sudo
       ansible.builtin.package:
         name: cifs-utils
         state: present
