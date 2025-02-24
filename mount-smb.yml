@@ -1,7 +1,7 @@
 ---
 - name: Mount Samba Share
   hosts: all
-  become: yes
+  become: true
   tasks:
     - name: Install cifs-utils
       become_method: sudo
