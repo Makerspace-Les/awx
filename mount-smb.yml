@@ -4,6 +4,7 @@
   become: yes
   tasks:
     - name: Install cifs-utils
+      become: yes
       ansible.builtin.package:
         name: cifs-utils
         state: present
