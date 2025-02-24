@@ -3,7 +3,6 @@
   hosts: all
   tasks:
     - name: Install cifs-utils
-      become: true
       ansible.builtin.package:
         name: cifs-utils
         state: present
