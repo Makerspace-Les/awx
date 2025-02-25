@@ -9,6 +9,9 @@
 #        state: present
 
     - name: Create mount point directory
+      become: yes
+      become_user: root
+      become_method: sudo
       ansible.builtin.file:
         path: /mnt/samba-share
         state: directory
