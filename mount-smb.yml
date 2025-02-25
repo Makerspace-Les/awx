@@ -23,13 +23,13 @@
         path: /mnt/samba-share
         src: "//{{ samba_server_ip }}/{{ samba_share_name }}"
         fstype: cifs
-        opts: "username={{ samba_username }},password={{ samba_password }},uid=1000,gid=1000,file_mode=0644,dir_mode=0755"
+        opts: "username={{ samba_username }},password={{ samba_password }},uid=1000,gid=1000,file_mode=0655,dir_mode=0755"
         state: mounted
 
-    - name: Ensure mount point is added to /etc/fstab
-      ansible.builtin.mount:
-        path: /mnt/samba-share
-        src: "//{{ samba_server_ip }}/{{ samba_share_name }}"
-        fstype: cifs
-        opts: "username={{ samba_username }},password={{ samba_password }},uid=1000,gid=1000,file_mode=0644,dir_mode=0755"
-        state: present
+#    - name: Ensure mount point is added to /etc/fstab
+#      ansible.builtin.mount:
+#        path: /mnt/samba-share
+#        src: "//{{ samba_server_ip }}/{{ samba_share_name }}"
+#        fstype: cifs
+#        opts: "username={{ samba_username }},password={{ samba_password }},uid=1000,gid=1000,file_mode=0644,dir_mode=0755"
+#        state: present
