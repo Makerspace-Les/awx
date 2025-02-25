@@ -3,10 +3,10 @@
   hosts: all
   become: true
   tasks:
-    - name: Install cifs-utils
-      ansible.builtin.package:
-        name: cifs-utils
-        state: present
+#    - name: Install cifs-utils
+#      ansible.builtin.package:
+#        name: cifs-utils
+#        state: present
 
     - name: Create mount point directory
       ansible.builtin.file:
