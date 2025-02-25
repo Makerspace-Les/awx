@@ -2,16 +2,15 @@
 - name: Mount Samba Share
   hosts: all
   become: true
+  become_user: root
+  become_method: sudo
   tasks:
-#    - name: Install cifs-utils
-#      ansible.builtin.package:
-#        name: cifs-utils
-#        state: present
+    - name: Install cifs-utils
+      ansible.builtin.package:
+        name: cifs-utils
+        state: present
 
     - name: Create mount point directory
-      become: yes
-      become_user: root
-      become_method: sudo
       ansible.builtin.file:
         path: /mnt/samba-share
         state: directory
