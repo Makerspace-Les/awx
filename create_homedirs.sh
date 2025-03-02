@@ -4,6 +4,7 @@
 BASE_DIR="/home"
 
 # FreeIPA-Benutzer abrufen (nur aktive Benutzer mit UID >= 1000)
+echo Computer$ | kinit
 USERS=$(ipa user-find --all --raw | grep 'uid: ' | awk '{print $2}')
 
 # Prüfen, ob die Benutzerliste leer ist
