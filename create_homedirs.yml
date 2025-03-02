@@ -2,7 +2,7 @@
 - name: Create home directories for FreeIPA users
   hosts: all
   become: yes
-  become_method: yes
+  become_method: sudo
   become_user: root
   tasks:
     - name: Copy script to server
